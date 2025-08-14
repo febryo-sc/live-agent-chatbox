@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0 / 90%);
+  --border: oklch(1 0 0 / 20%);
+}
+
+.dark {
+  --background: oklch(0 0 0 / 90%);
+  --foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 20%);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.glass-box {
+  @apply border bg-white/10 shadow-sm backdrop-blur-md dark:bg-black/20;
+}
+
+.glass-box-hover {
+  @apply hover:opacity-80;
+}
+
+.glass-box-active {
+  @apply border-foreground shadow-lg;
+}
+
+.input-form {
+  @apply bg-background/20 placeholder:text-foreground/70 disabled:text-foreground/70 w-full rounded-full border px-4 py-3 backdrop-blur outline-none;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.input-search {
+  @apply bg-background/20 placeholder:text-foreground/70 disabled:text-foreground/70 w-full rounded-full border py-3 pr-4 pl-12 backdrop-blur outline-none;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.input-search-icon {
+  @apply absolute top-0 bottom-0 left-3 z-20 my-auto size-4 h-6 w-6;
+}
+
+.input-chat-group {
+  @apply bg-background/20 w-full rounded-full border backdrop-blur outline-none;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.input-chat {
+  @apply placeholder:text-foreground/70 w-full resize-y py-3 outline-none;
+  height: 50px;
+  min-height: 50px;
+  max-height: 150px;
+}
+
+.page-title {
+  @apply text-2xl font-bold;
+}
+
+.primary-button {
+  @apply flex items-center justify-center rounded-full bg-orange-500 p-2 font-medium outline-0 transition duration-200 hover:bg-orange-600 disabled:bg-orange-900 disabled:hover:bg-orange-900;
+}
+
+.secondary-button {
+  @apply flex items-center justify-center rounded-full border bg-white/10 p-2 font-medium shadow-sm outline-0 backdrop-blur-md transition duration-200 hover:opacity-70 hover:backdrop-blur-3xl disabled:backdrop-blur-3xl disabled:hover:opacity-100 dark:bg-black/20;
+}
+
+.chat-bubble-me {
+  @apply mb-2 max-w-3/4 rounded-3xl rounded-ee-none bg-orange-200 px-4 py-2 break-words text-black shadow-sm;
+}
+
+.chat-bubble-me a {
+  @apply text-green-600 italic hover:underline dark:text-green-700;
+}
+
+.chat-bubble-me .chat-time {
+  @apply text-right text-xs text-gray-800/70 dark:text-black/70;
+}
+
+.chat-bubble-other {
+  @apply bg-background text-foreground mb-2 max-w-3/4 rounded-3xl rounded-ss-none px-4 py-2 break-words shadow-sm;
+}
+
+.chat-bubble-other a {
+  @apply text-green-600 italic hover:underline dark:text-green-600;
+}
+
+.chat-bubble-other .chat-time {
+  @apply text-right text-xs text-gray-800/70 dark:text-white/70;
+}
