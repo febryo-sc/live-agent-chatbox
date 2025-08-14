@@ -31,6 +31,7 @@ Mmake sure the following endpoint services are running on the backend service:
 - {{API_BASE_URL}}/chat_history
 - {{API_BASE_URL}}/chat_send
 - {{API_BASE_URL}}/activate_session
+- {{API_BASE_URL}}/deactivate_session
 - {{API_BASE_URL}}/list_member
 - {{API_BASE_URL}}/register_number
 ```
